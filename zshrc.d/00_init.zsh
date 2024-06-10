@@ -15,6 +15,7 @@ function is-true {
 
 # OS checks.
 function is-macos  { [[ "$OSTYPE" == darwin* ]] }
+function is-darwin { is-macos }
 function is-linux  { [[ "$OSTYPE" == linux*  ]] }
 function is-bsd    { [[ "$OSTYPE" == *bsd*   ]] }
 function is-cygwin { [[ "$OSTYPE" == cygwin* ]] }
