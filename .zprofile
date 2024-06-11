@@ -42,8 +42,6 @@ path=(
   $HOME/bin
   $HOME/.local/bin
   $HOME/go/bin
-  /opt/homebrew/{bin,sbin}
-  $HOME/.asdf/bin
   /usr/local/{bin,sbin}
   /opt/local/{bin,sbin}
   /usr/{bin,sbin}
