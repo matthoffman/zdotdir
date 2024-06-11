@@ -1,5 +1,8 @@
 # Source in asdf's shell config, in old or new location. 
 # If it's in both places, the XDG location will override the old one. 
+#
+# This is intentionally after homebrew, so that things asdf manages will be found first. 
+#
 if [[ -f "${HOME}/.asdf/asdf.sh" ]]; then
 	. $HOME/.asdf/asdf.sh
 fi
