@@ -1,0 +1,21 @@
+[submodule "plugins/powerlevel10k"]
+	path = plugins/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
+[submodule "plugins/z"]
+	path = plugins/z
+	url = https://github.com/rupa/z
+[submodule "plugins/zsh-autosuggestions"]
+	path = plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "plugins/zsh-abbr"]
+	path = plugins/zsh-abbr
+	url = https://github.com/olets/zsh-abbr
+[submodule "plugins/zsh-defer"]
+	path = plugins/zsh-defer
+	url = https://github.com/romkatv/zsh-defer
+[submodule "plugins/zsh-history-substring-search"]
+	path = plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule "plugins/zsh-syntax-highlighting"]
+	path = plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting

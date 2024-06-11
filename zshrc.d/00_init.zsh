@@ -29,6 +29,8 @@ function is-termux { [[ "$OSTYPE" == linux-android ]] }
 #
 # Courtesy of mattmc3 from https://github.com/mattmc3/zsh_unplugged
 #
+# TODO: I don't actually want to clone a repo dynamically if it's not there. 
+#
 ##? Clone a plugin, identify its init file, source it, and add it to fpath.
 # Note that unlike most plugin loading functions, this does *not* assume the 
 # "github.com" part of the repo URL. That must be explicit. 
@@ -40,18 +42,20 @@ function plugin-load {
   for repo in $@; do
     plugdir=$ZPLUGINDIR/${repo:t}
     initfile=$plugdir/${repo:t}.plugin.zsh
-    if [[ ! -d $plugdir ]]; then
-      echo "Cloning $repo..."
-      git clone -q --depth 1 --recursive --shallow-submodules \
-        $repo $plugdir
-    fi
-    if [[ ! -e $initfile ]]; then
-      initfiles=($plugdir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
-      (( $#initfiles )) || { echo >&2 "No init file '$repo'." && continue }
-      ln -sf $initfiles[1] $initfile
-    fi
-    fpath+=$plugdir
-    (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
+	# mattmc3's version clones the repo on demand if it isn't there. I am taking the 
+	# absence of the plugin dir as a sign that we don't want to use this plugin in 
+	# this environment. 
+    if [[ -d $plugdir ]]; then
+		if [[ ! -e $initfile ]]; then
+		  initfiles=($plugdir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
+		  (( $#initfiles )) || { echo >&2 "No init file '$repo'." && continue }
+		  # Don't create a symlink, just because that pollutes the repo with untracked files, which is annoying.
+		  #ln -sf $initfiles[1] $initfile
+		  initfile=$initfiles[1]
+		fi
+		fpath+=$plugdir
+		(( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
+	fi
   done
 }
 
