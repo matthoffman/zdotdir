@@ -21,14 +21,6 @@ if (( $+commands[brew] && ! $+functions[_curl] )) && \
   unset curl_prefix
 fi
 
-# Add homebrew completions to $fpath
-if (( $+commands[brew] )); then 
-  # make sure we have Homebrew env vars
-  if [[ -z "$HOMEBREW_PREFIX" ]]; then
-    source <(brew shellenv)
-  fi 
-  fpath=("${HOMEBREW_PREFIX}/share/zsh/site-functions" $fpath)
-fi
 
 #
 # Options
