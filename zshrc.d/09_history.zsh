@@ -1,4 +1,3 @@
-#
 # History-related options
 # 
 
@@ -54,11 +53,17 @@ EON
   elif [[ "$OLD_HISTFILE" -nt "$HISTFILE" ]]; then
     <<EOW
 WARNING: Default path of 'HISTFILE' has changed from '${OLD_HISTFILE/#$HOME/~}'
-         to '${HISTFILE/#$HOME/~}'.
-         Either set 'HISTFILE' in '${${0:h}/#$HOME/~}'
-         or move previous history from '${OLD_HISTFILE/#$HOME/~}' to
-         '${HISTFILE/#$HOME/~}'.
+         to '${HISTFILE/#$HOME/~}'. 
+		 You have a history file in both places, but ${OLD_HISTFILE} is newer 
+		 than ${HISTFILE}.
+		 If you recently transitioned to the new location, it could be that you 
+		 still have terminals 
+		 writing to the old location. You may want to:
+		 diff ${OLD_HISTFILE} ${HISTFILE}
+		 and see if there is history that you want to preserve.'.
 EOW
+	# Update histfile so that this doesn't happen again.
+	touch "$HISTFILE"
   fi
 
   unset OLD_HISTFILE
