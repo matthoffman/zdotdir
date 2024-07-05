@@ -20,6 +20,10 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 # that prompt based on it which is the exact opposite of what we want to do.
 export VIRTUAL_ENV_DISABLE_PROMPT=12
 
+# Tell pip not to install packages outside of a virtual env. Prevent accidental
+# pollution of the root env. 
+export PIP_REQUIRE_VIRTUALENV=true
+
 # Fish-like dirs
 : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
 : ${__zsh_user_data_dir:=${XDG_DATA_HOME:-$HOME/.local/share}/zsh}
