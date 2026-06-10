@@ -5,6 +5,8 @@ alias datestamp="date '+%Y-%m-%d'"
 alias isodate="date +%Y-%m-%dT%H:%M:%S%z"
 alias utc="date -u +%Y-%m-%dT%H:%M:%SZ"
 alias unixepoch="date +%s"
+# Handy for filenames
+alias ts="date '+%FT%H%M%S'"
 
 # find
 alias fd='find . -type d -name'
