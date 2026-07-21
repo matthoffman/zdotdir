@@ -21,6 +21,10 @@ if (( $+commands[brew] && ! $+functions[_curl] )) && \
   unset curl_prefix
 fi
 
+# If we have brew zsh installed, load its completions
+if type brew &>/dev/null && [[ -d $(brew --prefix)/share/zsh-completions ]]; then
+  fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
+fi
 
 #
 # Options
