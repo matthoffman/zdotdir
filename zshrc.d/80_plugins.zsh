@@ -1,5 +1,5 @@
-# We don't have a list of plugins here. We instead set them up in individual zshrc 
-# files wherever it makes sense. 
+# I don't currently have a list of plugins here. 
+# I instead set them up in individual zshrc files wherever it makes sense. 
 #
 # repos=(
 #   https://github.com/sindresorhus/pure
